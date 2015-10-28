@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='gaiabase',
-    version='0.1.0',
+    version='0.0.1-alpha',
     author='Mingli Yuan',
     author_email='mingli.yuan@gmail.com',
     packages=['gaia','gaia.cloud','gaia.db'],
