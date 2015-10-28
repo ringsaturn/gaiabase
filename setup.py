@@ -5,7 +5,7 @@ setup(
     version='0.1.0',
     author='Mingli Yuan',
     author_email='mingli.yuan@gmail.com',
-    packages=['gaia'],
+    packages=['gaia','gaia.cloud','gaia.db'],
     package_dir={'gaia': 'gaia'},
     url='git+https://github.com/caiyunapp/gaiabase.git',
     license='LICENSE',
