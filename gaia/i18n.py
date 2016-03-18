@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import unicode_literals
+from contextlib import contextmanager
 
 import os
 import os.path as path
@@ -51,3 +52,8 @@ def get(lang, table, key):
         return tables[lang][table][key]
     else:
         raise Exception('[%s:%s:%s] is not supported!' % (lang, table, key))
+
+
+@contextmanager
+def ctx(lang, tname):
+    yield table(lang, tname)
