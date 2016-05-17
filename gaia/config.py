@@ -42,7 +42,8 @@ def load_config(fname):
         result = {}
         if extname == '.cfg' or extname == '.ini':
             config = DictCfgParser()
-            result = config.read(fpath).as_dict()
+            config.read(fpath)
+            result = config.as_dict()
         if extname == '.json':
             with open(fpath, 'r') as fcfg:
                 if basename != 'app':
