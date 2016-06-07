@@ -43,11 +43,14 @@ def table(lang, tname):
     if lang in tables and tname in tables[lang]:
         return tables[lang][tname]
     else:
-        raise Exception('[%s:%s] is not supported!' % (lang, tname))
+        logger.warn('[%s:%s] is not supported, using en_US by default!' % (lang, tname))
+        return tables['en_US'][tname]
 
 
 def get(lang, table, key):
     if lang in tables and table in tables[lang] and key in tables[lang][table]:
         return tables[lang][table][key]
     else:
-        raise Exception('[%s:%s:%s] is not supported!' % (lang, table, key))
+        logger.warn('[%s:%s:%s] is not supported, using en_US by default!' % (lang, table, key))
+        return tables['en_US'][table][key]
+
