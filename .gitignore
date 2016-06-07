@@ -55,7 +55,6 @@ docs/_build/
 
 # PyBuilder
 target/
-
 .idea
 .idea/encodings.xml
 .idea/gaiabase.iml

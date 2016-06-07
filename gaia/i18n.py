@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import unicode_literals
+from contextlib import contextmanager
 
 import os
 import os.path as path
@@ -54,3 +55,7 @@ def get(lang, table, key):
         logger.warn('[%s:%s:%s] is not supported, using en_US by default!' % (lang, table, key))
         return tables['en_US'][table][key]
 
+
+@contextmanager
+def ctx(lang, tname):
+    yield table(lang, tname)

@@ -17,21 +17,25 @@ class DictCfgParser(ConfigParser.ConfigParser):
             d[k].pop('__name__', None)
         return d
 
-if "CAIYUN_ENV" in os.environ:
-    gaia_env = os.environ["CAIYUN_ENV"]
+if "PRJ_ENV" in os.environ:
+    prj_env = os.environ["PRJ_ENV"]
 else:
-    gaia_env = "dev"
+    prj_env = "dev"
 
-cfg_path = os.path.join(base.find_path(), 'conf', gaia_env)
+cfg_path = os.path.join(base.find_path(), 'conf', prj_env)
+
 
 def on_production():
-    return gaia_env == "prod"
+    return prj_env == "prod"
+
 
 def on_stagging():
-    return gaia_env == "stagging"
+    return prj_env == "stagging"
+
 
 def on_dev():
-    return gaia_env == "dev"
+    return prj_env == "dev"
+
 
 def load_config(fname):
     result = None
@@ -42,7 +46,8 @@ def load_config(fname):
         result = {}
         if extname == '.cfg' or extname == '.ini':
             config = DictCfgParser()
-            result = config.read(fpath).as_dict()
+            config.read(fpath)
+            result = config.as_dict()
         if extname == '.json':
             with open(fpath, 'r') as fcfg:
                 if basename != 'app':
@@ -58,6 +63,7 @@ def load_config(fname):
     except Exception as e:
         pass
     return result
+
 
 def main():
     try:
