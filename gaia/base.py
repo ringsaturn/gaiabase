@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 
 import os
+import six
 
 
 def find_path():
-    cwd = os.getcwdu()
+    cwd = six.moves.getcwd()
     venvpath = os.path.join(cwd, '.py')
 
     if os.path.exists(venvpath):
@@ -23,5 +24,3 @@ def find_path():
             basepath = cwd
 
     return basepath
-
-

@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 
-import os, sys
-import json, yaml
-
-import ConfigParser
+import json
+import os
+import sys
 
 import gaia.base as base
+import yaml
+from six.moves import configparser
 
 
-class DictCfgParser(ConfigParser.ConfigParser):
+class DictCfgParser(configparser.ConfigParser):
 
     def as_dict(self):
         d = dict(self._sections)
@@ -16,6 +17,7 @@ class DictCfgParser(ConfigParser.ConfigParser):
             d[k] = dict(self._defaults, **d[k])
             d[k].pop('__name__', None)
         return d
+
 
 if "PRJ_ENV" in os.environ:
     prj_env = os.environ["PRJ_ENV"]
@@ -75,6 +77,7 @@ def main():
         sys.exit(0)
     except BaseException:
         sys.exit(-1)
+
 
 if __name__ == "__main__":
     main()

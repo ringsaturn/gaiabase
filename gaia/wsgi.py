@@ -64,4 +64,3 @@ def png(func):
 
 def jpeg(func):
     return wrap_img(func, 'jpeg')
-
